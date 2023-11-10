@@ -1,0 +1,58 @@
+server:
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 200
+      min-spare: 30
+    connection-timeout: 5000ms
+    max-swallow-size: 100MB
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/mushroom?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2b8
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 300MB
+      max-request-size: 350MB
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+
+
+#  redis:
+#    host: 192.168.81.130
+#    port: 6379
+#    timeout: 3000
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+#  #静态资源路径
+#  web.upload-path=D:/mimi/
+#  spring.mvc.static-path-pattern=/**
+#  spring.resources.static-locations=classpath\:/META-INF/resources/,classpath\:/resources/,classpath\:/static/,classpath\:/public/,file\:${web.upload-path}
+#
+#
+
+
+my-config:
+  file-path : D:\mushroomFiles\
+  # 标签集
+  predict.tags : classpath/static/class_indices.json
+  # 模型所在位置
+  predict.modelpath : /static/mushroom_vit.onnx
+
+##########?????????###################
+sql:
+  init:
+    schema-locations: classpath:db/schema-h2.sql
+    data-locations: classpath:db/data-h2.sql
+    mode: always
+
+
+
